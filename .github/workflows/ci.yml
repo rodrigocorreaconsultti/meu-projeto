@@ -1,0 +1,24 @@
+name: Meu Pipeline CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v3
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Rodar testes
+        run: npm test
+
+      - name: Build da aplicação
+        run: npm run build
+
+      - name: Deploy (simulado)
+        run: echo "Enviando aplicação para servidor..."
